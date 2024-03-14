@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3wl-NSw9cVfdRNxIsPr16YJlcW6U9z3EBkjv1oqxptOX9a4dFvPmZ_lHPMT05ZbYxA5s&usqp=CAU">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefa</title>
+    <style>
+       @font-face {
+        font-family:z;
+        src: url(Hello\ Avocado.otf);
+       }
+       @font-face {
+            font-family: isu;
+            src: url(Chentenario.otf);
+        }
+
+        @font-face {
+            font-family: plr;
+            src: url(Power\ Smash.ttf);
+        }
+
+        @font-face {
+            font-family: k;
+            src: url(COMIKAN.otf);
+        }
+
+
+        body{
+            background: url(https://cdn.pixabay.com/photo/2020/02/06/01/52/frame-4822807_1280.png);
+            font-weight: 900px;
+            font-size: x-large;
+            text-align: center;
+            font-family: k;
+        }
+
+        #taskInput{
+            background-color: rgb(211, 241, 211);
+            width: 70%;
+            margin-bottom: 10px;
+            border-radius: 50px;
+            font-size: large;
+            font-family: isu;
+
+        }
+
+        #taskList{
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .taskItem{
+            margin-bottom: 5px;
+        }
+
+        .taskItem button{
+            margin-left: 5px;
+        }
+
+        button{
+            border-radius: 50px;
+            font-size: large;
+            font-family: k;
+            background-color: rgb(221, 255, 221);
+        }
+        
+        h1{
+            font-family: plr;
+            font-size: 100px;
+            background-image: url(https://i.gifer.com/NzPA.gif);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+        }
+
+        footer{
+            font-size: 30px;
+            margin-top: 320px;
+            font-family: z;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Lista de Tarefas</h1>
+
+    <input type="text" id="taskInput" placeholder="Digite uma tarefa">
+
+    <button onclick="addTask()">Adicionar Tarefa</button>
+    <ul id="taskList">
+        
+        <!-- lista de tarefas será insirida aqui -->
+    </ul>
+    
+    <script>
+        function addTask() {
+            var taskInput = document.getElementById("taskInput");
+            var taskText = taskInput.value.trim();
+
+            if (taskText !== "") {
+                var taskList = document.getElementById("taskList");
+                var li = document.createElement("li");
+                li.className = "taskItem";
+                li.innerHTML = taskText + '<button onclick="removeTask(this)">Remover</button>';
+                taskList.appendChild(li);
+                taskInput.value = "";
+
+            } else {
+                alert("Por favor, insira uma tarefa válida");
+            }
+        }
+
+        function removeTask (button) {
+            var li = button.parentNode;
+            var ul = li.parentNode;
+            ul.removeChild(li);
+
+        }
+
+        document.getElementById("taskInput").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                addTask();
+            }
+        });
+
+    </script>
+
+    <footer>Criado por John Wislley Iniciante em Programação Web</footer>
+</body>
+</html>
